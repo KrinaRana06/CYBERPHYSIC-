@@ -25,15 +25,11 @@ const long readInterval = 1000;        // Interval for reading and printing (100
 
 int ledState = LOW;
 
-
-
 void setup() {
 
   // 1. Initialize the LED pin as an output
 
   pinMode(ledPin, OUTPUT);
-
-
 
   // 2. Initialize serial communication at 9600 baud
 
@@ -41,13 +37,11 @@ void setup() {
 
   analogReadResolution(12);
 
-  Serial.println("--- Arduino Sketch Started (D6 Blink / A1 Read) ---");
+  Serial.println(" Arduino Sketch Started (D6 Blink / A1 Read)");
 
   Serial.println("Potentiometer readings will be printed every second (Range 0-4095).");
 
 }
-
-
 
 void loop() {
 
@@ -55,23 +49,15 @@ void loop() {
 
   unsigned long currentMillis = millis();
 
-
-
-  // -----------------------------------------------------------------
-
   // 1. LED Blinking Task (500 ms ON / 500 ms OFF)
-
-  // -----------------------------------------------------------------
 
   if (currentMillis - previousMillisBlink >= blinkInterval) {
 
-    // Save the current time for the next comparison
+    // Saving the current time for the next comparison
 
     previousMillisBlink = currentMillis;
 
-
-
-    // Toggle the LED state
+    //Toggle the LED state
 
     if (ledState == LOW) {
 
@@ -83,35 +69,23 @@ void loop() {
 
     }
 
-
-
     // Apply the new state to the LED pin
 
     digitalWrite(ledPin, ledState);
 
   }
 
-
-
-  // -----------------------------------------------------------------
-
   // 2. Potentiometer Reading and Serial Print Task (Once per second)
-
-  // -----------------------------------------------------------------
 
   if (currentMillis - previousMillisRead >= readInterval) {
 
-    // Save the current time for the next comparison
+    // Saving the current time for the next comparison
 
     previousMillisRead = currentMillis;
-
-
 
     // Read the raw analog value from A1 (0-4095 on MKR1010)
 
     int rawValue = analogRead(potPin);
-
-
 
     // Print the raw value to the Serial Monitor
 
